@@ -1,0 +1,294 @@
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Background from '@/components/Background'
+
+export default function Blog() {
+  return (
+    <>
+      <Header />
+      <Background />
+
+      <section className="blog-section" id="blog">
+        <h2 className="heading">Code <span>Blog</span></h2>
+        
+        <div className="blog-container">
+          <article className="blog-post">
+            <div className="blog-header">
+              <h3>Getting Started with JavaScript ES6+ Features</h3>
+              <span className="blog-date"><i className='bx bx-calendar'></i> January 15, 2024</span>
+            </div>
+            <div className="blog-content">
+              <p>JavaScript ES6+ introduced many powerful features that have revolutionized modern web development. Let&apos;s explore some of the most important ones:</p>
+              
+              <h4>1. Arrow Functions</h4>
+              <pre><code>{`// Traditional function
+function add(a, b) {
+    return a + b;
+}
+
+// Arrow function
+const add = (a, b) => a + b;`}</code></pre>
+
+              <h4>2. Destructuring</h4>
+              <pre><code>{`// Array destructuring
+const [first, second] = [1, 2];
+
+// Object destructuring
+const { name, age } = { name: 'John', age: 30 };`}</code></pre>
+
+              <h4>3. Template Literals</h4>
+              <pre><code>{`const name = 'World';
+const greeting = \`Hello, \${name}!\`;`}</code></pre>
+
+              <h4>4. Promises and Async/Await</h4>
+              <pre><code>{`// Using async/await
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}`}</code></pre>
+
+              <p>These features make JavaScript code more concise, readable, and maintainable. Start incorporating them into your projects today!</p>
+            </div>
+          </article>
+
+          <article className="blog-post">
+            <div className="blog-header">
+              <h3>CSS Grid vs Flexbox: When to Use What?</h3>
+              <span className="blog-date"><i className='bx bx-calendar'></i> January 10, 2024</span>
+            </div>
+            <div className="blog-content">
+              <p>Both CSS Grid and Flexbox are powerful layout tools, but they serve different purposes:</p>
+              
+              <h4>Use Flexbox when:</h4>
+              <ul>
+                <li>You need a one-dimensional layout (row OR column)</li>
+                <li>You want to align items within a container</li>
+                <li>You&apos;re working with components or small-scale layouts</li>
+              </ul>
+
+              <pre><code>{`.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}`}</code></pre>
+
+              <h4>Use CSS Grid when:</h4>
+              <ul>
+                <li>You need a two-dimensional layout (rows AND columns)</li>
+                <li>You want precise control over item placement</li>
+                <li>You&apos;re building page-level layouts</li>
+              </ul>
+
+              <pre><code>{`.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}`}</code></pre>
+
+              <p><strong>Pro Tip:</strong> You can use both together! Use Grid for the page layout and Flexbox for the components inside.</p>
+            </div>
+          </article>
+
+          <article className="blog-post">
+            <div className="blog-header">
+              <h3>React Hooks: useState and useEffect Explained</h3>
+              <span className="blog-date"><i className='bx bx-calendar'></i> January 5, 2024</span>
+            </div>
+            <div className="blog-content">
+              <p>React Hooks revolutionized how we write React components. Let&apos;s dive into the two most commonly used hooks:</p>
+              
+              <h4>useState Hook</h4>
+              <p>The useState hook allows you to add state to functional components:</p>
+              <pre><code>{`import { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+    
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>
+                Increment
+            </button>
+        </div>
+    );
+}`}</code></pre>
+
+              <h4>useEffect Hook</h4>
+              <p>The useEffect hook lets you perform side effects in functional components:</p>
+              <pre><code>{`import { useState, useEffect } from 'react';
+
+function DataFetcher() {
+    const [data, setData] = useState(null);
+    
+    useEffect(() => {
+        fetch('/api/data')
+            .then(res => res.json())
+            .then(data => setData(data));
+    }, []); // Empty array means run once on mount
+    
+    return <div>{data && <p>{data.message}</p>}</div>;
+}`}</code></pre>
+
+              <p>Remember: useEffect&apos;s dependency array controls when the effect runs. An empty array means it runs once on mount.</p>
+            </div>
+          </article>
+
+          <article className="blog-post">
+            <div className="blog-header">
+              <h3>RESTful API Design Best Practices</h3>
+              <span className="blog-date"><i className='bx bx-calendar'></i> December 28, 2023</span>
+            </div>
+            <div className="blog-content">
+              <p>Designing a good REST API is crucial for building scalable applications. Here are some best practices:</p>
+              
+              <h4>1. Use Proper HTTP Methods</h4>
+              <ul>
+                <li><strong>GET:</strong> Retrieve resources (idempotent, safe)</li>
+                <li><strong>POST:</strong> Create new resources</li>
+                <li><strong>PUT:</strong> Update entire resources (idempotent)</li>
+                <li><strong>PATCH:</strong> Partial updates</li>
+                <li><strong>DELETE:</strong> Remove resources (idempotent)</li>
+              </ul>
+
+              <h4>2. Use Meaningful URLs</h4>
+              <pre><code>{`// Good
+GET /api/users/123
+POST /api/users
+PUT /api/users/123
+
+// Bad
+GET /api/getUser?id=123
+POST /api/createUser`}</code></pre>
+
+              <h4>3. Proper Status Codes</h4>
+              <ul>
+                <li><strong>200 OK:</strong> Successful GET, PUT, PATCH</li>
+                <li><strong>201 Created:</strong> Successful POST</li>
+                <li><strong>204 No Content:</strong> Successful DELETE</li>
+                <li><strong>400 Bad Request:</strong> Client error</li>
+                <li><strong>404 Not Found:</strong> Resource doesn&apos;t exist</li>
+                <li><strong>500 Internal Server Error:</strong> Server error</li>
+              </ul>
+
+              <h4>4. Version Your API</h4>
+              <pre><code>{`// Include version in URL
+/api/v1/users
+/api/v2/users`}</code></pre>
+
+              <p>Following these practices will make your API more intuitive, maintainable, and developer-friendly.</p>
+            </div>
+          </article>
+
+          <article className="blog-post">
+            <div className="blog-header">
+              <h3>Git Workflow: Branching Strategies</h3>
+              <span className="blog-date"><i className='bx bx-calendar'></i> December 20, 2023</span>
+            </div>
+            <div className="blog-content">
+              <p>Effective Git branching strategies are essential for team collaboration. Here&apos;s a guide to common workflows:</p>
+              
+              <h4>Git Flow</h4>
+              <p>A popular branching model with specific branch types:</p>
+              <ul>
+                <li><strong>main/master:</strong> Production-ready code</li>
+                <li><strong>develop:</strong> Integration branch for features</li>
+                <li><strong>feature/:</strong> New features</li>
+                <li><strong>release/:</strong> Preparing releases</li>
+                <li><strong>hotfix/:</strong> Urgent production fixes</li>
+              </ul>
+
+              <h4>Common Git Commands</h4>
+              <pre><code>{`# Create and switch to new branch
+git checkout -b feature/new-feature
+
+# Stage changes
+git add .
+
+# Commit changes
+git commit -m "Add new feature"
+
+# Push to remote
+git push origin feature/new-feature
+
+# Merge branch
+git checkout main
+git merge feature/new-feature`}</code></pre>
+
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Keep commits small and focused</li>
+                <li>Write clear commit messages</li>
+                <li>Pull before you push</li>
+                <li>Use pull requests for code review</li>
+                <li>Delete merged branches</li>
+              </ul>
+            </div>
+          </article>
+
+          <article className="blog-post">
+            <div className="blog-header">
+              <h3>Responsive Design: Mobile-First Approach</h3>
+              <span className="blog-date"><i className='bx bx-calendar'></i> December 15, 2023</span>
+            </div>
+            <div className="blog-content">
+              <p>Mobile-first design means designing for mobile devices first, then enhancing for larger screens. This approach has many benefits:</p>
+              
+              <h4>Why Mobile-First?</h4>
+              <ul>
+                <li>Better performance on mobile devices</li>
+                <li>Forces you to prioritize essential content</li>
+                <li>Easier to scale up than scale down</li>
+                <li>Better user experience across all devices</li>
+              </ul>
+
+              <h4>CSS Media Queries</h4>
+              <pre><code>{`/* Mobile-first: base styles for mobile */
+.container {
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+        padding: 2rem;
+    }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+    .container {
+        width: 1200px;
+        padding: 3rem;
+    }
+}`}</code></pre>
+
+              <h4>Viewport Meta Tag</h4>
+              <pre><code>{`<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0">`}</code></pre>
+
+              <h4>Flexible Units</h4>
+              <ul>
+                <li>Use <code>rem</code> and <code>em</code> for typography</li>
+                <li>Use <code>%</code> and <code>vw/vh</code> for layouts</li>
+                <li>Avoid fixed pixel values for responsive elements</li>
+              </ul>
+
+              <p>Remember: Test on real devices, not just browser dev tools!</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+}
+
