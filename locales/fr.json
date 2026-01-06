@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "home": "À propos",
+    "education": "Éducation",
+    "skills": "Compétences",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Salut, c'est",
+    "subtitle": "Je suis un",
+    "description": "Je suis un développeur et designer passionné qui aime créer des solutions numériques qui font la différence. Avec un œil attentif pour le design et une solide base en développement, je donne vie aux idées grâce à un code propre et des interfaces utilisateur intuitives. Quand je ne code pas, vous pouvez me trouver en train d'explorer de nouvelles technologies, de contribuer à des projets open-source, ou de partager des connaissances avec la communauté des développeurs.",
+    "hire": "Embaucher",
+    "contact": "Contact",
+    "downloadCV": "Télécharger CV"
+  },
+  "education": {
+    "title": "Éducation"
+  },
+  "skills": {
+    "title": "Compétences",
+    "uiDesign": {
+      "title": "Design UI",
+      "description": "Création d'interfaces utilisateur intuitives et visuellement attrayantes qui améliorent l'expérience utilisateur. Je me spécialise dans la conception de mises en page modernes et réactives en utilisant les principes de design, la théorie des couleurs et la typographie. Maîtrise d'outils comme Figma, Adobe XD et Sketch pour donner vie aux concepts avec une précision au pixel près."
+    },
+    "frontend": {
+      "title": "Développement Frontend",
+      "description": "Création d'applications web réactives et interactives en utilisant des technologies modernes comme React, Vue.js et Angular. Expérimenté en HTML5, CSS3, JavaScript (ES6+) et TypeScript. Je crée des sites web rapides, accessibles et optimisés pour le SEO qui fonctionnent parfaitement sur tous les appareils et navigateurs."
+    },
+    "backend": {
+      "title": "Développement Backend",
+      "description": "Développement d'applications côté serveur robustes et d'API RESTful en utilisant Node.js, Python et Java. Expérimenté dans la conception de bases de données (SQL et NoSQL), les systèmes d'authentification et les services cloud. Je construis des solutions backend évolutives, sécurisées et efficaces qui alimentent les applications web modernes."
+    },
+    "testing": {
+      "title": "Tests",
+      "description": "Assurance de la qualité et de la fiabilité du code grâce à des stratégies de test complètes. Compétent en tests unitaires, tests d'intégration et tests end-to-end en utilisant des frameworks comme Jest, Mocha et Cypress. J'écris des cas de test maintenables qui détectent les bugs tôt et assurent des déploiements fluides."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "me": "Moi",
+    "fullName": "Nom complet",
+    "email": "Email",
+    "phone": "Numéro de téléphone",
+    "subject": "Sujet",
+    "message": "Votre message",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
+    "error": "Erreur lors de l'envoi du message. Veuillez réessayer."
+  },
+  "footer": {
+    "rights": "Tous droits réservés"
+  },
+  "blog": {
+    "title": "Code",
+    "subtitle": "Blog"
+  },
+  "hire": {
+    "title": "Travaillons",
+    "together": "Ensemble",
+    "subtitle": "Transformez vos idées en expériences numériques exceptionnelles",
+    "description": "Je suis un développeur et designer full-stack passionné prêt à donner vie à votre vision. Que vous ayez besoin d'une application web complète, d'un redesign ou d'une expertise technique, je suis là pour vous aider à réussir.",
+    "getStarted": "Commencer",
+    "viewSkills": "Voir mes compétences",
+    "whyChoose": "Pourquoi",
+    "chooseMe": "Me Choisir",
+    "myProcess": "Mon",
+    "process": "Processus",
+    "submitProject": "Soumettre votre",
+    "project": "Projet",
+    "formIntro": "Remplissez le formulaire ci-dessous pour commencer. Je vais examiner les détails de votre projet et vous répondre dans les 24 heures.",
+    "submit": "Soumettre la demande de projet",
+    "submitting": "Envoi en cours...",
+    "success": "Merci ! Votre demande de projet a été soumise avec succès. Je vous répondrai dans les 24 heures.",
+    "error": "Erreur lors de la soumission de votre demande. Veuillez réessayer."
+  }
+}
+

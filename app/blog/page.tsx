@@ -1,15 +1,20 @@
+'use client'
+
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Background from '@/components/Background'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Blog() {
+  const { t, isLoading } = useLanguage()
+  
   return (
     <>
       <Header />
       <Background />
 
       <section className="blog-section" id="blog">
-        <h2 className="heading">Code <span>Blog</span></h2>
+        <h2 className="heading">{isLoading ? 'Code' : t('blog.title')} <span>{isLoading ? 'Blog' : t('blog.subtitle')}</span></h2>
         
         <div className="blog-container">
           <article className="blog-post">

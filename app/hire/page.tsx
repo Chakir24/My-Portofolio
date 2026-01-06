@@ -5,9 +5,12 @@ import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Background from '@/components/Background'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Hire() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  const { t, isLoading } = useLanguage()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -20,25 +23,38 @@ export default function Hire() {
     })
     
     setIsSubmitting(true)
-    const submitBtn = form.querySelector('.btn-submit') as HTMLButtonElement
-    const originalText = submitBtn.innerHTML
+    setSubmitStatus(null)
     
-    submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Submitting...'
-    submitBtn.disabled = true
-    
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-      console.log('Form submitted:', data)
-      
-      alert('Thank you! Your project request has been submitted successfully. I will get back to you within 24 hours.')
-      
-      form.reset()
-      submitBtn.innerHTML = originalText
-      submitBtn.disabled = false
+    try {
+      const response = await fetch('/api/project', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        form.reset()
+        setIsSubmitting(false)
+        
+        setTimeout(() => {
+          setSubmitStatus(null)
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 3000)
+      } else {
+        setSubmitStatus('error')
+        setIsSubmitting(false)
+        console.error('Error:', result.error)
+      }
+    } catch (error) {
+      setSubmitStatus('error')
       setIsSubmitting(false)
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }, 1500)
+      console.error('Error submitting form:', error)
+    }
   }
 
   return (
@@ -48,21 +64,18 @@ export default function Hire() {
 
       <section className="hire-hero" id="hire">
         <div className="hire-hero-content">
-          <h1>Let&apos;s Work <span>Together</span></h1>
-          <p className="hire-subtitle">Transform your ideas into exceptional digital experiences</p>
-          <p className="hire-description">
-            I&apos;m a passionate full-stack developer and designer ready to bring your vision to life. 
-            Whether you need a complete web application, a redesign, or technical expertise, I&apos;m here to help you succeed.
-          </p>
+          <h1>{isLoading ? 'Let\'s Work' : t('hire.title')} <span>{isLoading ? 'Together' : t('hire.together')}</span></h1>
+          <p className="hire-subtitle">{isLoading ? 'Transform your ideas into exceptional digital experiences' : t('hire.subtitle')}</p>
+          <p className="hire-description">{isLoading ? 'I\'m a passionate full-stack developer and designer ready to bring your vision to life. Whether you need a complete web application, a redesign, or technical expertise, I\'m here to help you succeed.' : t('hire.description')}</p>
           <div className="btn-group">
-            <Link href="/#contact" className="btn">Get Started</Link>
-            <Link href="/#services" className="btn">View My Skills</Link>
+            <Link href="/#contact" className="btn">{isLoading ? 'Get Started' : t('hire.getStarted')}</Link>
+            <Link href="/#services" className="btn">{isLoading ? 'View My Skills' : t('hire.viewSkills')}</Link>
           </div>
         </div>
       </section>
 
       <section className="hire-why">
-        <h2 className="heading">Why <span>Choose Me</span></h2>
+        <h2 className="heading">{isLoading ? 'Why' : t('hire.whyChoose')} <span>{isLoading ? 'Choose Me' : t('hire.chooseMe')}</span></h2>
         
         <div className="why-container">
           <div className="why-item">
@@ -122,7 +135,7 @@ export default function Hire() {
       </section>
 
       <section className="hire-process">
-        <h2 className="heading">My <span>Process</span></h2>
+        <h2 className="heading">{isLoading ? 'My' : t('hire.myProcess')} <span>{isLoading ? 'Process' : t('hire.process')}</span></h2>
         
         <div className="process-timeline">
           <div className="process-step">
@@ -182,8 +195,8 @@ export default function Hire() {
       </section>
 
       <section className="hire-form-section" id="project-form">
-        <h2 className="heading">Submit Your <span>Project</span></h2>
-        <p className="form-intro">Fill out the form below to get started. I&apos;ll review your project details and get back to you within 24 hours.</p>
+        <h2 className="heading">{isLoading ? 'Submit Your' : t('hire.submitProject')} <span>{isLoading ? 'Project' : t('hire.project')}</span></h2>
+        <p className="form-intro">{isLoading ? 'Fill out the form below to get started. I\'ll review your project details and get back to you within 24 hours.' : t('hire.formIntro')}</p>
         
         <form className="hire-form" id="project-submission-form" onSubmit={handleSubmit}>
           <div className="form-section">
@@ -192,24 +205,24 @@ export default function Hire() {
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="full-name">Full Name <span className="required">*</span></label>
-                <input type="text" id="full-name" name="full-name" placeholder="John Doe" required />
+                <input type="text" id="full-name" name="full-name" placeholder="John Doe" required disabled={isSubmitting} />
               </div>
               
               <div className="form-group">
                 <label htmlFor="email">Email Address <span className="required">*</span></label>
-                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                <input type="email" id="email" name="email" placeholder="john@example.com" required disabled={isSubmitting} />
               </div>
             </div>
             
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" />
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" disabled={isSubmitting} />
               </div>
               
               <div className="form-group">
                 <label htmlFor="company">Company/Organization</label>
-                <input type="text" id="company" name="company" placeholder="Your Company Name" />
+                <input type="text" id="company" name="company" placeholder="Your Company Name" disabled={isSubmitting} />
               </div>
             </div>
           </div>
@@ -219,7 +232,7 @@ export default function Hire() {
             
             <div className="form-group">
               <label htmlFor="project-type">Project Type <span className="required">*</span></label>
-              <select id="project-type" name="project-type" required>
+              <select id="project-type" name="project-type" required disabled={isSubmitting}>
                 <option value="">Select a project type</option>
                 <option value="web-development">Web Development</option>
                 <option value="web-design">Web Design</option>
@@ -236,7 +249,7 @@ export default function Hire() {
             
             <div className="form-group">
               <label htmlFor="project-title">Project Title <span className="required">*</span></label>
-              <input type="text" id="project-title" name="project-title" placeholder="e.g., E-commerce Website Development" required />
+              <input type="text" id="project-title" name="project-title" placeholder="e.g., E-commerce Website Development" required disabled={isSubmitting} />
             </div>
             
             <div className="form-group">
@@ -247,13 +260,14 @@ export default function Hire() {
                 rows={6} 
                 placeholder="Describe your project in detail. What are your goals? What features do you need? What problems are you trying to solve?" 
                 required 
+                disabled={isSubmitting}
               />
             </div>
             
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="budget">Budget Range</label>
-                <select id="budget" name="budget">
+                <select id="budget" name="budget" disabled={isSubmitting}>
                   <option value="">Select budget range</option>
                   <option value="under-5k">Under $5,000</option>
                   <option value="5k-10k">$5,000 - $10,000</option>
@@ -266,7 +280,7 @@ export default function Hire() {
               
               <div className="form-group">
                 <label htmlFor="timeline">Preferred Timeline</label>
-                <select id="timeline" name="timeline">
+                <select id="timeline" name="timeline" disabled={isSubmitting}>
                   <option value="">Select timeline</option>
                   <option value="asap">As soon as possible</option>
                   <option value="1-month">Within 1 month</option>
@@ -289,6 +303,7 @@ export default function Hire() {
                 name="features" 
                 rows={4} 
                 placeholder="List the main features or requirements for your project (e.g., User authentication, Payment integration, Admin dashboard, etc.)" 
+                disabled={isSubmitting}
               />
             </div>
             
@@ -299,6 +314,7 @@ export default function Hire() {
                 id="technologies" 
                 name="technologies" 
                 placeholder="e.g., React, Node.js, MongoDB, etc. (Leave blank if unsure)" 
+                disabled={isSubmitting}
               />
             </div>
             
@@ -309,6 +325,7 @@ export default function Hire() {
                 id="reference" 
                 name="reference" 
                 placeholder="https://example.com (Links to similar projects or inspiration)" 
+                disabled={isSubmitting}
               />
             </div>
             
@@ -319,15 +336,44 @@ export default function Hire() {
                 name="additional-info" 
                 rows={4} 
                 placeholder="Any other details, questions, or information you'd like to share" 
+                disabled={isSubmitting}
               />
             </div>
           </div>
           
           <div className="form-submit">
             <button type="submit" className="btn btn-submit" disabled={isSubmitting}>
-              <i className='bx bx-paper-plane'></i> Submit Project Request
+              {isSubmitting ? (
+                <>
+                  <i className='bx bx-loader-alt bx-spin'></i> {isLoading ? 'Submitting...' : t('hire.submitting')}
+                </>
+              ) : (
+                <>
+                  <i className='bx bx-paper-plane'></i> {isLoading ? 'Submit Project Request' : t('hire.submit')}
+                </>
+              )}
             </button>
             <p className="form-note">By submitting this form, you agree to be contacted regarding your project inquiry.</p>
+            {isSubmitting && (
+              <div className="loading-overlay">
+                <div className="loading-spinner">
+                  <i className='bx bx-loader-alt bx-spin'></i>
+                  <p>{isLoading ? 'Submitting your project request...' : t('hire.submitting')}</p>
+                </div>
+              </div>
+            )}
+            {submitStatus === 'success' && !isSubmitting && (
+              <div className="success-message">
+                <i className='bx bx-check-circle'></i>
+                <p>{isLoading ? 'Thank you! Your project request has been submitted successfully. I will get back to you within 24 hours.' : t('hire.success')}</p>
+              </div>
+            )}
+            {submitStatus === 'error' && !isSubmitting && (
+              <div className="error-message">
+                <i className='bx bx-error-circle'></i>
+                <p>{isLoading ? 'Error submitting your request. Please try again.' : t('hire.error')}</p>
+              </div>
+            )}
           </div>
         </form>
       </section>

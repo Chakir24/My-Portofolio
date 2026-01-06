@@ -2,13 +2,119 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Background from '@/components/Background'
 import { useScrollActive } from '@/hooks/useScrollActive'
+import { useLanguage } from '@/contexts/LanguageContext'
+
+function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  const { t, isLoading } = useLanguage()
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      subject: formData.get('subject') as string,
+      message: formData.get('message') as string,
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        form.reset()
+        setTimeout(() => {
+          setSubmitStatus(null)
+        }, 3000)
+      } else {
+        setSubmitStatus('error')
+        console.error('Error:', result.error)
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      console.error('Error submitting form:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="input-group">
+        <div className="input-box">
+          <input type="text" name="name" placeholder={isLoading ? 'Full Name' : t('contact.fullName')} required disabled={isSubmitting} />
+          <input type="email" name="email" placeholder={isLoading ? 'Email' : t('contact.email')} required disabled={isSubmitting} />
+        </div>
+        <div className="input-box">
+          <input type="tel" name="phone" placeholder={isLoading ? 'Phone Number' : t('contact.phone')} disabled={isSubmitting} />
+          <input type="text" name="subject" placeholder={isLoading ? 'Subject' : t('contact.subject')} disabled={isSubmitting} />
+        </div>
+      </div>
+      <div className="input-group-2">
+        <textarea name="message" cols={30} rows={10} placeholder={isLoading ? 'Your Message' : t('contact.message')} required disabled={isSubmitting}></textarea>
+        <button 
+          type="submit" 
+          className="btn" 
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <i className='bx bx-loader-alt bx-spin' style={{ marginRight: '0.5rem' }}></i>
+              {isLoading ? 'Sending...' : t('contact.sending')}
+            </>
+          ) : (
+            isLoading ? 'Send Message' : t('contact.send')
+          )}
+        </button>
+      </div>
+      {isSubmitting && (
+        <div className="loading-overlay">
+          <div className="loading-spinner">
+            <i className='bx bx-loader-alt bx-spin'></i>
+            <p>{isLoading ? 'Sending your message...' : t('contact.sending')}</p>
+          </div>
+        </div>
+      )}
+      {submitStatus === 'success' && !isSubmitting && (
+        <div className="success-message">
+          <i className='bx bx-check-circle'></i>
+          <p>{isLoading ? 'Message sent successfully! I\'ll get back to you soon.' : t('contact.success')}</p>
+        </div>
+      )}
+      {submitStatus === 'error' && !isSubmitting && (
+        <div className="error-message">
+          <i className='bx bx-error-circle'></i>
+          <p>{isLoading ? 'Error sending message. Please try again.' : t('contact.error')}</p>
+        </div>
+      )}
+    </form>
+  )
+}
 
 export default function Home() {
   useScrollActive()
+  const { t, isLoading } = useLanguage()
 
   const handleDownloadCV = () => {
     // Option 1: Si vous avez un fichier CV dans le dossier public
@@ -33,25 +139,19 @@ export default function Home() {
       <button 
         className="download-cv-btn" 
         id="download-cv" 
-        title="Download CV as PDF"
+        title={isLoading ? 'Download CV as PDF' : t('home.downloadCV')}
         onClick={handleDownloadCV}
       >
         <i className='bx bx-download'></i>
-        <span className="download-cv-text">Download CV</span>
+        <span className="download-cv-text">{isLoading ? 'Download CV' : t('home.downloadCV')}</span>
       </button>
 
       <section className="home" id="home">
         <div className="home-content">
-          <h1>Hi, It&apos;s <span>Chakir</span></h1>
-          <h3 className="text-animation">I&apos;m a <span></span></h3>
+          <h1>{t('home.title')} <span>Chakir</span></h1>
+          <h3 className="text-animation">{t('home.subtitle')} <span></span></h3>
           
-          <p>
-            I&apos;m a passionate developer and designer who loves creating digital solutions 
-            that make a difference. With a keen eye for design and a strong foundation in 
-            development, I bring ideas to life through clean code and intuitive user interfaces.
-            When I&apos;m not coding, you can find me exploring new technologies, contributing to 
-            open-source projects, or sharing knowledge with the developer community.
-          </p>
+          <p>{t('home.description')}</p>
 
           <div className="social-icons">
             <a href="" className='bx bxl-linkedin'></a>
@@ -60,8 +160,8 @@ export default function Home() {
             <a href="" className='bx bxl-twitter'></a>
           </div>
           <div className="btn-group">
-            <Link href="/hire" className="btn">Hire</Link>
-            <a href="#contact" className="btn">Contact</a>
+            <Link href="/hire" className="btn">{t('home.hire')}</Link>
+            <a href="#contact" className="btn">{t('home.contact')}</a>
           </div>
         </div>
         
@@ -77,7 +177,7 @@ export default function Home() {
       </section>
 
       <section className="education" id="education">
-        <h2 className="heading">Education</h2>
+        <h2 className="heading">{isLoading ? 'Education' : t('education.title')}</h2>
             
         <div className="timeline-items">
           <div className="timeline-item">
@@ -128,70 +228,43 @@ export default function Home() {
       </section>
 
       <section className="services" id="services">
-        <h2 className="heading">Skills</h2>
+        <h2 className="heading">{isLoading ? 'Skills' : t('skills.title')}</h2>
 
         <div className="services-container">
           <div className="service-box">
             <div className="service-info">
-              <h4>UI Design</h4>
-              <p>Creating intuitive and visually appealing user interfaces that enhance user experience. 
-              I specialize in designing modern, responsive layouts using design principles, color theory, 
-              and typography. Proficient in tools like Figma, Adobe XD, and Sketch to bring concepts 
-              to life with pixel-perfect precision.</p>
+              <h4>{isLoading ? 'UI Design' : t('skills.uiDesign.title')}</h4>
+              <p>{isLoading ? 'Creating intuitive and visually appealing user interfaces that enhance user experience. I specialize in designing modern, responsive layouts using design principles, color theory, and typography. Proficient in tools like Figma, Adobe XD, and Sketch to bring concepts to life with pixel-perfect precision.' : t('skills.uiDesign.description')}</p>
             </div>
           </div>
 
           <div className="service-box">
             <div className="service-info">
-              <h4>Frontend Development</h4>
-              <p>Building responsive and interactive web applications using modern technologies like React, 
-              Vue.js, and Angular. Experienced in HTML5, CSS3, JavaScript (ES6+), and TypeScript. 
-              I create fast, accessible, and SEO-friendly websites that work seamlessly across all 
-              devices and browsers.</p>
+              <h4>{isLoading ? 'Frontend Development' : t('skills.frontend.title')}</h4>
+              <p>{isLoading ? 'Building responsive and interactive web applications using modern technologies like React, Vue.js, and Angular. Experienced in HTML5, CSS3, JavaScript (ES6+), and TypeScript. I create fast, accessible, and SEO-friendly websites that work seamlessly across all devices and browsers.' : t('skills.frontend.description')}</p>
             </div>
           </div>
 
           <div className="service-box">
             <div className="service-info">
-              <h4>Backend Development</h4>
-              <p>Developing robust server-side applications and RESTful APIs using Node.js, Python, 
-              and Java. Experienced in database design (SQL and NoSQL), authentication systems, 
-              and cloud services. I build scalable, secure, and efficient backend solutions that 
-              power modern web applications.</p>
+              <h4>{isLoading ? 'Backend Development' : t('skills.backend.title')}</h4>
+              <p>{isLoading ? 'Developing robust server-side applications and RESTful APIs using Node.js, Python, and Java. Experienced in database design (SQL and NoSQL), authentication systems, and cloud services. I build scalable, secure, and efficient backend solutions that power modern web applications.' : t('skills.backend.description')}</p>
             </div>
           </div>
 
           <div className="service-box">
             <div className="service-info">
-              <h4>Testing</h4>
-              <p>Ensuring code quality and reliability through comprehensive testing strategies. 
-              Proficient in unit testing, integration testing, and end-to-end testing using 
-              frameworks like Jest, Mocha, and Cypress. I write maintainable test cases that 
-              catch bugs early and ensure smooth deployments.</p>
+              <h4>{isLoading ? 'Testing' : t('skills.testing.title')}</h4>
+              <p>{isLoading ? 'Ensuring code quality and reliability through comprehensive testing strategies. Proficient in unit testing, integration testing, and end-to-end testing using frameworks like Jest, Mocha, and Cypress. I write maintainable test cases that catch bugs early and ensure smooth deployments.' : t('skills.testing.description')}</p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="contact" id="contact">
-        <h2 className="heading">Contact <span>Me</span></h2>
+        <h2 className="heading">{isLoading ? 'Contact' : t('contact.title')} <span>{isLoading ? 'Me' : t('contact.me')}</span></h2>
 
-        <form action="">
-          <div className="input-group">
-            <div className="input-box">
-              <input type="text" placeholder="Full Name" />
-              <input type="email" name="" id="" placeholder="Email" />
-            </div>
-            <div className="input-box">
-              <input type="tel" name="" id="" placeholder="Phone Number" />
-              <input type="text" placeholder="Subject" />
-            </div>
-          </div>
-          <div className="input-group-2">
-            <textarea name="" id="" cols={30} rows={10} placeholder="Your Message"></textarea>
-            <input type="submit" value="Send Message" className="btn" />
-          </div>
-        </form>
+        <ContactForm />
       </section>
 
       <Footer />
