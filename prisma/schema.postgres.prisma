@@ -1,5 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Schema Prisma pour PostgreSQL (Production sur Vercel)
+// Pour utiliser ce schéma, renommez-le en schema.prisma et changez provider à "postgresql"
 
 generator client {
   provider = "prisma-client-js"
@@ -21,7 +21,7 @@ model ContactMessage {
 }
 
 model ProjectSubmission {
-  id                 Int      @id @default(autoincrement())
+  id                Int      @id @default(autoincrement())
   fullName           String
   email              String
   phone              String?
@@ -37,3 +37,4 @@ model ProjectSubmission {
   additionalInfo     String?
   createdAt          DateTime @default(now())
 }
+
