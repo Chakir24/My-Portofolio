@@ -233,7 +233,7 @@ export default function Home() {
             <div className="timeline-date">2021 - 2023</div>
             <div className="timeline-content">
               <h3>Graphic Designer & Frontend Engineer @ MC&Co Agency</h3>
-              <p>Development of the agency's showcase website, highlighting the services offered with an aesthetic and functional design, ensuring smooth navigation and optimal user experience.</p>
+              <p>Development of the agency&apos;s showcase website, highlighting the services offered with an aesthetic and functional design, ensuring smooth navigation and optimal user experience.</p>
             </div>
           </div>
         </div>
