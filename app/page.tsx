@@ -99,7 +99,7 @@ function ContactForm() {
       {submitStatus === 'success' && !isSubmitting && (
         <div className="success-message">
           <i className='bx bx-check-circle'></i>
-          <p>{isLoading ? 'Message sent successfully! I\'ll get back to you soon.' : t('contact.success')}</p>
+          <p>{isLoading ? 'Message sent successfully! I&apos;ll get back to you soon.' : t('contact.success')}</p>
         </div>
       )}
       {submitStatus === 'error' && !isSubmitting && (
