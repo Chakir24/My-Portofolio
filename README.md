@@ -43,22 +43,38 @@ npm start
 ## Project Structure
 
 ```
-├── app/
-│   ├── layout.tsx      # Root layout with metadata
-│   ├── page.tsx        # Home page
-│   ├── blog/
-│   │   └── page.tsx    # Blog page
-│   ├── hire/
-│   │   └── page.tsx    # Hire page
-│   └── globals.css     # Global styles import
-├── components/
-│   ├── Header.tsx      # Navigation header
-│   ├── Footer.tsx      # Footer component
-│   └── Background.tsx # Animated background bubbles
-├── hooks/
-│   └── useScrollActive.ts # Scroll-based active link hook
-├── public/             # Static assets (images)
-└── style.css           # Main stylesheet
+├── app/                    # Next.js App Router
+│   ├── admin/             # Admin dashboard pages
+│   ├── api/               # API routes
+│   ├── blog/              # Blog page
+│   ├── hire/              # Hire page
+│   ├── styles/            # Stylesheets
+│   │   └── style.css      # Main stylesheet
+│   ├── globals.css        # Global styles import
+│   ├── layout.tsx         # Root layout with metadata
+│   ├── page.tsx           # Home page
+│   └── providers.tsx      # Context providers
+├── components/            # React components
+│   ├── Header.tsx         # Navigation header
+│   ├── Footer.tsx         # Footer component
+│   └── Background.tsx     # Animated background bubbles
+├── contexts/              # React contexts
+│   └── LanguageContext.tsx
+├── hooks/                 # Custom React hooks
+│   └── useScrollActive.ts
+├── lib/                   # Utility libraries
+│   ├── auth.ts            # NextAuth configuration
+│   └── prisma.ts          # Prisma client
+├── locales/               # Internationalization
+│   ├── en.json
+│   └── fr.json
+├── prisma/                # Database schema and migrations
+│   ├── migrations/
+│   └── schema.prisma
+├── public/                # Static assets (images)
+├── scripts/               # Build and setup scripts
+├── docs/                  # Documentation
+└── archive/               # Archived files (old HTML version)
 ```
 
 ## Key Features
@@ -94,12 +110,30 @@ The theme toggle persists user preference in localStorage and switches between d
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
 
+## Documentation
+
+Additional documentation is available in the `docs/` directory:
+- `docs/QUICK_START_POSTGRES.md` - Quick start guide for PostgreSQL setup
+- `docs/POSTGRES_SETUP.md` - Complete PostgreSQL setup guide
+- `docs/VERCEL_DEPLOY.md` - Vercel deployment guide
+- `docs/ADMIN.md` - Admin panel documentation
+
+## Documentation
+
+Additional documentation is available in the `docs/` directory:
+- `docs/QUICK_START_POSTGRES.md` - Quick start guide for PostgreSQL setup
+- `docs/POSTGRES_SETUP.md` - Complete PostgreSQL setup guide
+- `docs/VERCEL_DEPLOY.md` - Vercel deployment guide
+- `docs/ADMIN.md` - Admin panel documentation
+
 ## Notes
 
 - Images are stored in the `public/` directory
 - Styles are imported globally via `app/globals.css`
 - The project uses the Next.js App Router architecture
 - All components are client-side by default (using 'use client' directive where needed)
+- Old HTML files are archived in the `archive/` directory
+- Old HTML files are archived in the `archive/` directory
 
 ## License
 
