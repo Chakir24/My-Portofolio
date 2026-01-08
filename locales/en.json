@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "home": "About me",
+    "education": "Education",
+    "skills": "Skills",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Hi, It's",
+    "subtitle": "I'm a",
+    "description": "I'm a passionate developer and designer who loves creating digital solutions that make a difference. With a keen eye for design and a strong foundation in development, I bring ideas to life through clean code and intuitive user interfaces. When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.",
+    "hire": "Hire",
+    "contact": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "education": {
+    "title": "Education"
+  },
+  "skills": {
+    "title": "Skills",
+    "uiDesign": {
+      "title": "UI Design",
+      "description": "Creating intuitive and visually appealing user interfaces that enhance user experience. I specialize in designing modern, responsive layouts using design principles, color theory, and typography. Proficient in tools like Figma, Adobe XD, and Sketch to bring concepts to life with pixel-perfect precision."
+    },
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Building responsive and interactive web applications using modern technologies like React, Vue.js, and Angular. Experienced in HTML5, CSS3, JavaScript (ES6+), and TypeScript. I create fast, accessible, and SEO-friendly websites that work seamlessly across all devices and browsers."
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "Developing robust server-side applications and RESTful APIs using Node.js, Python, and Java. Experienced in database design (SQL and NoSQL), authentication systems, and cloud services. I build scalable, secure, and efficient backend solutions that power modern web applications."
+    },
+    "testing": {
+      "title": "Testing",
+      "description": "Ensuring code quality and reliability through comprehensive testing strategies. Proficient in unit testing, integration testing, and end-to-end testing using frameworks like Jest, Mocha, and Cypress. I write maintainable test cases that catch bugs early and ensure smooth deployments."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "me": "Me",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "subject": "Subject",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "error": "Error sending message. Please try again."
+  },
+  "footer": {
+    "rights": "All Rights Reserved"
+  },
+  "blog": {
+    "title": "Code",
+    "subtitle": "Blog"
+  },
+  "hire": {
+    "title": "Let's Work",
+    "together": "Together",
+    "subtitle": "Transform your ideas into exceptional digital experiences",
+    "description": "I'm a passionate full-stack developer and designer ready to bring your vision to life. Whether you need a complete web application, a redesign, or technical expertise, I'm here to help you succeed.",
+    "getStarted": "Get Started",
+    "viewSkills": "View My Skills",
+    "whyChoose": "Why",
+    "chooseMe": "Choose Me",
+    "myProcess": "My",
+    "process": "Process",
+    "submitProject": "Submit Your",
+    "project": "Project",
+    "formIntro": "Fill out the form below to get started. I'll review your project details and get back to you within 24 hours.",
+    "submit": "Submit Project Request",
+    "submitting": "Submitting...",
+    "success": "Thank you! Your project request has been submitted successfully. I will get back to you within 24 hours.",
+    "error": "Error submitting your request. Please try again."
+  }
+}
+
