@@ -155,7 +155,7 @@ export default function Home() {
 
           <div className="social-icons">
             <a href="" className='bx bxl-linkedin'></a>
-            <a href="" className='bx bxl-github'></a>
+            <a href="https://github.com/Chakir24" target="_blank" rel="noopener noreferrer" className='bx bxl-github'></a>
             <a href="" className='bx bxl-instagram'></a>
             <a href="" className='bx bxl-twitter'></a>
           </div>
@@ -176,54 +176,66 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="education" id="education">
-        <h2 className="heading">{isLoading ? 'Education' : t('education.title')}</h2>
+      <section className="experience" id="experience">
+        <h2 className="heading">{isLoading ? 'Experience' : t('experience.title')}</h2>
             
         <div className="timeline-items">
           <div className="timeline-item">
             <div className="timeline-dot"></div>
-            <div className="timeline-date">2021</div>
+            <div className="timeline-date">2024 - 2025</div>
             <div className="timeline-content">
-              <h3>High School</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Nihil explicabo quidem autem quas dolorum perferendis 
-                aspernatur quis quia sapiente, unde non, voluptatibus 
-                deserunt tenetur commodi animi rem incidunt ipsa dolore!</p>
+              <h3>Frontend Engineer @ Foxtech</h3>
+              <p>Maintenance of the Dispatch Suite, a web and mobile solution aimed at improving productivity on construction sites and optimizing resource management.</p>
             </div>
           </div>
           <div className="timeline-item">
             <div className="timeline-dot"></div>
-            <div className="timeline-date">2022</div>
+            <div className="timeline-date">2023 - 2025</div>
             <div className="timeline-content">
-              <h3>University</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Nihil explicabo quidem autem quas dolorum perferendis 
-                aspernatur quis quia sapiente, unde non, voluptatibus 
-                deserunt tenetur commodi animi rem incidunt ipsa dolore!</p>
-            </div>
-          </div> 
-          <div className="timeline-item">
-            <div className="timeline-dot"></div>
-            <div className="timeline-date">2023</div>
-            <div className="timeline-content">
-              <h3>Internship</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Nihil explicabo quidem autem quas dolorum perferendis 
-                aspernatur quis quia sapiente, unde non, voluptatibus 
-                deserunt tenetur commodi animi rem incidunt ipsa dolore!</p>
+              <h3>Web Engineer @ Neolixe</h3>
+              <p>Development of a web application for IT management of municipalities, including the creation of the town hall presentation website, increasing local administration visibility and facilitating online interaction with residents.</p>
             </div>
           </div>
           <div className="timeline-item">
             <div className="timeline-dot"></div>
-            <div className="timeline-date">2024</div>
+            <div className="timeline-date">2024 - 2025</div>
             <div className="timeline-content">
-              <h3>Job 1</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Nihil explicabo quidem autem quas dolorum perferendis 
-                aspernatur quis quia sapiente, unde non, voluptatibus 
-                deserunt tenetur commodi animi rem incidunt ipsa dolore!</p>
+              <h3>Frontend Engineer @ Plannia</h3>
+              <p>Development of an AI-automated web application for project plan updates, with algorithms calculating critical path, margin and remaining budget, as well as generating visual reports and interactive dashboards.</p>
             </div>
-          </div>  
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">2023 - 2024</div>
+            <div className="timeline-content">
+              <h3>Web Engineer @ Faseya</h3>
+              <p>Design and development of an innovative CRM, structuring the fundamental architecture of the application and developing key modules such as human resources management, projects, dashboards, settings and a storage module (Drive).</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">2023 - 2024</div>
+            <div className="timeline-content">
+              <h3>Web Engineer @ MA-INFO</h3>
+              <p>Development of an ERP application and implementation of key features in various modules, as well as the development of the institutional website and a showcase site dedicated to ERP commercialization.</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">2022 - 2023</div>
+            <div className="timeline-content">
+              <h3>Web Engineer @ Findtech</h3>
+              <p>Design and development of a dashboard for a carpooling mobile application, improving user experience and service visibility.</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-date">2021 - 2023</div>
+            <div className="timeline-content">
+              <h3>Graphic Designer & Frontend Engineer @ MC&Co Agency</h3>
+              <p>Development of the agency's showcase website, highlighting the services offered with an aesthetic and functional design, ensuring smooth navigation and optimal user experience.</p>
+            </div>
+          </div>
         </div>
       </section>
 

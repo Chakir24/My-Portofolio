@@ -158,7 +158,9 @@ Ce guide vous explique comment déployer votre portfolio Next.js sur Vercel.
 
 3. **Configurez un domaine personnalisé (optionnel)**
    - Dans Vercel → Settings → Domains
-   - Ajoutez votre domaine personnalisé
+   - Ajoutez votre domaine personnalisé (ex: `chakir-dev.vercel.app`)
+   - **Important** : Mettez à jour `NEXTAUTH_URL` avec le nouveau domaine
+   - Voir `docs/CUSTOM_DOMAIN.md` pour un guide détaillé
 
 ## ⚠️ Notes Importantes
 

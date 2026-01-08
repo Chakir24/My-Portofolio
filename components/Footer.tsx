@@ -34,7 +34,7 @@ export default function Footer() {
       <footer className="footer">
         <div className="social">
           <a href="" className='bx bxl-linkedin'></a>
-          <a href="" className='bx bxl-github'></a>
+          <a href="https://github.com/Chakir24" target="_blank" rel="noopener noreferrer" className='bx bxl-github'></a>
           <a href="" className='bx bxl-instagram'></a>
           <a href="" className='bx bxl-twitter'></a>
         </div>
@@ -42,6 +42,9 @@ export default function Footer() {
       <ul className="list">
         <li>
           <Link href="/#home">{isLoading ? 'About me' : t('nav.home')}</Link>
+        </li>
+        <li>
+          <Link href="/#experience">{isLoading ? 'Experience' : t('nav.experience')}</Link>
         </li>
         <li>
           <Link href="/#services">{isLoading ? 'Skills' : t('nav.skills')}</Link>
@@ -56,6 +59,32 @@ export default function Footer() {
           <Link href="/#contact">{isLoading ? 'Contact' : t('nav.contact')}</Link>
         </li>
       </ul>
+
+      <div className="footer-info">
+        <div className="footer-info-item">
+          <i className='bx bx-map'></i>
+          <span>{isLoading ? 'Location' : t('footer.location')}: Rouyn-Noranda QC, CANADA</span>
+        </div>
+        <div className="footer-info-item">
+          <i className='bx bx-envelope'></i>
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              const email = atob('Y2hha2lyaWJyYWhpbTI0QGdtYWlsLmNvbQ==');
+              window.location.href = `mailto:${email}`;
+            }}
+            title={isLoading ? 'Email' : t('footer.email')}
+          >
+            {isLoading ? 'Email' : t('footer.email')}
+          </a>
+        </div>
+        <div className="footer-info-item">
+          <i className='bx bx-briefcase'></i>
+          <span>{isLoading ? 'Availability' : t('footer.availability')}: {isLoading ? 'Remote & On-site' : t('footer.both')}</span>
+        </div>
+      </div>
+
       <p className="copyright">
         Chakir <span>BOUSSARI</span> | {isLoading ? 'All Rights Reserved' : t('footer.rights')}
       </p>

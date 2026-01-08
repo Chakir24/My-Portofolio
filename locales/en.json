@@ -2,6 +2,7 @@
   "nav": {
     "home": "About me",
     "education": "Education",
+    "experience": "Experience",
     "skills": "Skills",
     "blog": "Blog",
     "contact": "Contact"
@@ -16,6 +17,9 @@
   },
   "education": {
     "title": "Education"
+  },
+  "experience": {
+    "title": "Experience"
   },
   "skills": {
     "title": "Skills",
@@ -50,7 +54,13 @@
     "error": "Error sending message. Please try again."
   },
   "footer": {
-    "rights": "All Rights Reserved"
+    "rights": "All Rights Reserved",
+    "location": "Location",
+    "email": "Email",
+    "availability": "Availability",
+    "remote": "Remote",
+    "onsite": "On-site",
+    "both": "Remote & On-site"
   },
   "blog": {
     "title": "Code",

@@ -130,8 +130,8 @@ export default function Header() {
         <Link href="/" className={isActive('/') ? 'active' : ''} onClick={closeMenu}>
           {isLoading ? 'About me' : t('nav.home')}
         </Link>
-        <Link href="/#education" className={pathname === '/' ? '' : ''} onClick={closeMenu}>
-          {isLoading ? 'Education' : t('nav.education')}
+        <Link href="/#experience" className={pathname === '/' ? '' : ''} onClick={closeMenu}>
+          {isLoading ? 'Experience' : t('nav.experience')}
         </Link>
         <Link href="/#services" className={pathname === '/' ? '' : ''} onClick={closeMenu}>
           {isLoading ? 'Skills' : t('nav.skills')}
