@@ -117,18 +117,13 @@ export default function Home() {
   const { t, isLoading } = useLanguage()
 
   const handleDownloadCV = () => {
-    // Option 1: Si vous avez un fichier CV dans le dossier public
-    // const link = document.createElement('a')
-    // link.href = '/cv.pdf'
-    // link.download = 'Chakir_BOUSSARI_CV.pdf'
-    // link.click()
-
-    // Option 2: Pour l'instant, on peut ouvrir un lien ou afficher un message
-    // Vous pouvez remplacer cette URL par le lien vers votre CV
-    window.open('/cv.pdf', '_blank')
-    
-    // Ou si vous n'avez pas encore de CV, vous pouvez afficher un message
-    // alert('CV download will be available soon!')
+    // Créer un lien de téléchargement pour le CV
+    const link = document.createElement('a')
+    link.href = '/cv.pdf'
+    link.download = 'Chakir_BOUSSARI_CV.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (
