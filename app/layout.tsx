@@ -3,8 +3,8 @@ import './globals.css'
 import Providers from './providers'
 
 export const metadata: Metadata = {
-  title: 'My Portfolio - Chakir BOUSSARI',
-  description: 'Portfolio website of Chakir BOUSSARI - Full Stack Developer',
+  title: 'Chakir BOUSSARI',
+  description: 'Chakir BOUSSARI - Full Stack Developer & Designer',
 }
 
 export default function RootLayout({
