@@ -73,6 +73,19 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/myfav.png', sizes: 'any', type: 'image/png' },
+      { url: '/myfav.png', type: 'image/png', sizes: '16x16' },
+      { url: '/myfav.png', type: 'image/png', sizes: '32x32' },
+      { url: '/myfav.png', type: 'image/png', sizes: '192x192' },
+      { url: '/myfav.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [
+      { url: '/myfav.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/myfav.png',
+  },
   verification: {
     // Ajoutez votre clé de vérification Google Search Console ici
     // google: 'votre-clé-de-vérification',
@@ -95,7 +108,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <StructuredData />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
         <script
           dangerouslySetInnerHTML={{
@@ -128,6 +140,7 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
+        <StructuredData />
         <Providers>{children}</Providers>
       </body>
     </html>

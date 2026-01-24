@@ -10,6 +10,7 @@
     scroll-behavior: smooth;
     font-family: 'Matemasie', sans-serif;
     font-weight: 500;
+    cursor: default;
 }
 :root{
     --bg-color: black;
@@ -34,6 +35,18 @@ body{
     background: var(--bg-color);
     color: var(--text-color);
     transition: background 0.3s ease, color 0.3s ease;
+    cursor: url('/cursor.svg') 16 16, auto;
+}
+
+/* Curseur personnalisé pour les éléments interactifs */
+a, button, input, textarea, select, .btn, .logo, .navbar a, 
+#theme-toggle, #menu-icon, .language-btn, .download-cv-btn {
+    cursor: url('/cursor.svg') 16 16, pointer;
+}
+
+/* Curseur pour les éléments de texte */
+p, h1, h2, h3, h4, h5, h6, span, label {
+    cursor: url('/cursor.svg') 16 16, text;
 }
 
 /* Prévenir le flash de couleur au chargement */
