@@ -1,10 +1,90 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Providers from './providers'
+import StructuredData from '@/components/StructuredData'
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://chakir.dev'
 
 export const metadata: Metadata = {
-  title: 'Chakir BOUSSARI',
-  description: 'Chakir BOUSSARI - Full Stack Developer & Designer',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Chakir BOUSSARI - Full Stack Developer & Designer',
+    template: '%s | Chakir BOUSSARI'
+  },
+  description: 'Portfolio professionnel de Chakir BOUSSARI, développeur Full Stack et designer. Spécialisé en React, Next.js, Node.js, et création d\'interfaces utilisateur modernes. Disponible pour projets freelance et collaborations.',
+  keywords: [
+    'Chakir BOUSSARI',
+    'Full Stack Developer',
+    'Web Developer',
+    'React Developer',
+    'Next.js Developer',
+    'Frontend Developer',
+    'Backend Developer',
+    'UI/UX Designer',
+    'Portfolio',
+    'Développeur Web',
+    'Développeur Full Stack',
+    'Freelance Developer',
+    'Web Design',
+    'JavaScript',
+    'TypeScript',
+    'Node.js',
+    'PostgreSQL'
+  ],
+  authors: [{ name: 'Chakir BOUSSARI' }],
+  creator: 'Chakir BOUSSARI',
+  publisher: 'Chakir BOUSSARI',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName: 'Chakir BOUSSARI Portfolio',
+    title: 'Chakir BOUSSARI - Full Stack Developer & Designer',
+    description: 'Portfolio professionnel de Chakir BOUSSARI, développeur Full Stack et designer. Spécialisé en React, Next.js, Node.js, et création d\'interfaces utilisateur modernes.',
+    images: [
+      {
+        url: `${siteUrl}/image2.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Chakir BOUSSARI - Full Stack Developer & Designer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Chakir BOUSSARI - Full Stack Developer & Designer',
+    description: 'Portfolio professionnel de Chakir BOUSSARI, développeur Full Stack et designer.',
+    images: [`${siteUrl}/image2.jpg`],
+    creator: '@chakirboussari',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Ajoutez votre clé de vérification Google Search Console ici
+    // google: 'votre-clé-de-vérification',
+  },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      'en-US': `${siteUrl}?lang=en`,
+      'fr-FR': `${siteUrl}?lang=fr`,
+    },
+  },
+  category: 'Portfolio',
 }
 
 export default function RootLayout({
@@ -15,6 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <StructuredData />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
         <script
           dangerouslySetInnerHTML={{

@@ -163,7 +163,7 @@ export default function Home() {
         <div className="home-img">
           <Image 
             src="/image2.jpg" 
-            alt="Chakir BOUSSARI" 
+            alt="Chakir BOUSSARI - Full Stack Developer & Designer Portfolio" 
             width={600}
             height={600}
             style={{ borderRadius: '50%' }}
