@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: 'Chakir BOUSSARI - Full Stack Developer & Designer',
     template: '%s | Chakir BOUSSARI'
   },
-  description: 'Portfolio professionnel de Chakir BOUSSARI, développeur Full Stack et designer. Spécialisé en React, Next.js, Node.js, et création d\'interfaces utilisateur modernes. Disponible pour projets freelance et collaborations.',
+  description: 'Bienvenue sur le portfolio de Chakir BOUSSARI, Développeur Full Stack et Designer. Spécialisé en React, Next.js, Node.js, et création d\'interfaces utilisateur modernes. Disponible pour projets freelance et collaborations.',
   keywords: [
     'Chakir BOUSSARI',
     'Full Stack Developer',
