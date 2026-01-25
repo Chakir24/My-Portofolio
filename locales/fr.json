@@ -33,7 +33,7 @@
     },
     "backend": {
       "title": "Développement Backend",
-      "description": "Développement d'applications côté serveur robustes et d'API RESTful en utilisant Node.js, Python et Java. Expérimenté dans la conception de bases de données (SQL et NoSQL), les systèmes d'authentification et les services cloud. Je construis des solutions backend évolutives, sécurisées et efficaces qui alimentent les applications web modernes."
+      "description": "Développement d'applications côté serveur robustes et d'API RESTful en utilisant Laravel, Node.js, Python et Java. Spécialisé dans le framework Laravel avec expertise en Filament pour les interfaces d'administration, Eloquent ORM et l'écosystème Laravel. Expérimenté dans la conception de bases de données et la modélisation de données (SQL et NoSQL), l'architecture système, les systèmes d'authentification et les services cloud. Je conçois également et développe des applications mobiles multiplateformes (React Native, Flutter) et traduis des besoins complexes en architectures simples, durables et évolutives. Je construis des solutions backend évolutives, sécurisées et efficaces qui alimentent les applications web et mobiles modernes."
     },
     "testing": {
       "title": "Tests",

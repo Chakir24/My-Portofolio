@@ -255,7 +255,7 @@ export default function Home() {
           <div className="service-box">
             <div className="service-info">
               <h4>{isLoading ? 'Backend Development' : t('skills.backend.title')}</h4>
-              <p>{isLoading ? 'Developing robust server-side applications and RESTful APIs using Node.js, Python, and Java. Experienced in database design (SQL and NoSQL), authentication systems, and cloud services. I build scalable, secure, and efficient backend solutions that power modern web applications.' : t('skills.backend.description')}</p>
+              <p>{isLoading ? 'Developing robust server-side applications and RESTful APIs using Laravel, Node.js, Python, and Java. Specialized in Laravel framework with expertise in Filament for admin interfaces, Eloquent ORM, and Laravel ecosystem. Experienced in database design and data modeling (SQL and NoSQL), system architecture, authentication systems, and cloud services. I also design and develop cross-platform mobile applications (React Native, Flutter) and translate complex requirements into simple, durable, and scalable architectures. I build scalable, secure, and efficient backend solutions that power modern web and mobile applications.' : t('skills.backend.description')}</p>
             </div>
           </div>
 
