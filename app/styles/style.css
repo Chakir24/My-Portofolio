@@ -197,7 +197,7 @@ html[data-theme="light"] {
     transition: 0.15s ease;
     border-bottom: 3px solid transparent;
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
 }
 
@@ -209,12 +209,79 @@ html[data-theme="light"] {
 }
 .navbar a{
     color: var(--text-color);
-    padding: 0.5rem 0;
+    padding: 0.8rem 1.5rem;
+    position: relative;
+    border-radius: 0.8rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
-.navbar a:hover,
-.navbar a.active{
+
+/* Effet de fond animé au survol */
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 158, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.navbar a:hover::before {
+    left: 100%;
+}
+
+/* Effet de bordure animée */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    width: 80%;
+}
+
+/* Effet de glow au survol */
+.navbar a:hover {
     color: var(--main-color);
-    border-bottom: 3px solid var(--main-color);
+    background: rgba(74, 158, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.15);
+}
+
+.navbar a.active {
+    color: var(--main-color);
+    background: rgba(74, 158, 255, 0.12);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(74, 158, 255, 0.2);
+}
+
+.navbar a.active::after {
+    width: 80%;
+}
+
+/* Amélioration pour le thème light */
+[data-theme="light"] .navbar a:hover {
+    background: rgba(90, 158, 255, 0.12);
+    box-shadow: 0 4px 12px rgba(90, 158, 255, 0.2);
+}
+
+[data-theme="light"] .navbar a.active {
+    background: rgba(90, 158, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(90, 158, 255, 0.25);
 }
 
 /* Cacher le navbar sur mobile par défaut pour éviter le flash */
@@ -860,6 +927,17 @@ top: 10px;
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -1643,13 +1721,39 @@ top: 10px;
         display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
+        animation: slideDown 0.3s ease-out;
     }
     
     .navbar a {
         display: block;
         font-size: 2rem;
-        margin: 3rem 0;
+        margin: 1.5rem 0;
         color: var(--text-color);
+        padding: 1.2rem 2rem;
+        border-radius: 1rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: fadeInUp 0.4s ease-out backwards;
+    }
+    
+    .navbar a:nth-child(1) { animation-delay: 0.1s; }
+    .navbar a:nth-child(2) { animation-delay: 0.15s; }
+    .navbar a:nth-child(3) { animation-delay: 0.2s; }
+    .navbar a:nth-child(4) { animation-delay: 0.25s; }
+    .navbar a:nth-child(5) { animation-delay: 0.3s; }
+    
+    .navbar a:hover {
+        background: rgba(74, 158, 255, 0.15);
+        transform: translateX(5px);
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+    }
+    
+    .navbar a.active {
+        background: rgba(74, 158, 255, 0.2);
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
     }
     
     .home-content h1 {
